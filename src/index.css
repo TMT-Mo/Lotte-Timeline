@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  color: #fff;
+}
+body {
+  background-image: url("./images/bg.jpg");
+  background-position: center;
+  background-size: cover; /* Set the image to cover all the div */
+  background-repeat: no-repeat; /* Commonly used for that situation */
+  background-attachment: fixed;
+}
+
+.App {
+  display: flex;
+  justify-content: space-around;
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
