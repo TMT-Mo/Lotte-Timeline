@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Countdown from "./components";
+import Countdown from "./components/Countdown";
 
 interface Events {
   name: string;

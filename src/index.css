@@ -6,11 +6,12 @@
   color: #fff;
 }
 body {
-  background-image: url("./images/bg.jpg");
+  background-image: url("./images/BG_LCD.jpg");
   background-position: center;
-  background-size: cover; /* Set the image to cover all the div */
-  background-repeat: no-repeat; /* Commonly used for that situation */
+  background-size: cover;
+  background-repeat: no-repeat; 
   background-attachment: fixed;
+
 }
 
 .App {
