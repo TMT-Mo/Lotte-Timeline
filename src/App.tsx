@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="flex items-center flex-col w-screen h-screen">
       <div className="p-10 text-white text-3xl w-fit border-2 border-white mt-4">
-        Incoming event: {DUMMY_EVENTS[0].name} at {DUMMY_EVENTS[0].milestone} 
+        Upcoming event: {DUMMY_EVENTS[0].name} at {DUMMY_EVENTS[0].milestone} 
       </div>
       <Countdown />
     </div>
