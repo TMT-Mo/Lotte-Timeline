@@ -2,16 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   color: #fff;
 }
 body {
-  background-image: url("./images/BG_LCD.jpg");
-  background-position: center;
+  background-image: url("./images/pexels-marko-obrvan-306344.jpg");
+  background-position: top;
   background-size: cover;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 .App {
@@ -22,3 +21,19 @@ body {
   padding-top: 40px;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  /* background: transparent; */
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 25px;
+  /* --tw-bg-opacity: 1 !important;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important; */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  /* background: #b2bec3; */
+  /* border: 1px #000 solid; */
+}

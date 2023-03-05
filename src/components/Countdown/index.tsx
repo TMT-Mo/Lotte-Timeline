@@ -1,6 +1,12 @@
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
+interface Props{
+  startTime: number
+  endTime: number
+  today: number
+}
+
 const minuteSeconds = 60;
 const hourSeconds = 3600;
 const daySeconds = 86400;
@@ -26,25 +32,16 @@ const getTimeMinutes = (time: number) =>
 const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time: number) => (time / daySeconds) | 0;
 
-export default function App() {
-  const startTime =
-    new Date("March 1, 2023 00:00:00 GMT+07:00").getTime() / 1000;
-  const endTime =
-    new Date("March 30, 2023 00:00:00 GMT+07:00").getTime() / 1000;
-  const today = Date.now() / 1000;
+export default function App(props: Props) {
+  const {startTime, endTime, today} = props
 
-  //   const startTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  //   const endTime = startTime + 243248; // use UNIX timestamp in seconds
+  const remainingSecondsFromStart = endTime - startTime; //* Seconds of days between START and end time (the whole circle)
+  // const days = Math.ceil(remainingSecondsFromStart / daySeconds); //* Convert to remaining days between START and end time
+  // const daysDurationFromStart = days * daySeconds; //* Convert to remaining seconds of days between START and end time
 
-  const remainingTime = endTime - startTime;
-  const days = Math.ceil(remainingTime / daySeconds);
-  const daysDuration = days * daySeconds;
-  const remainingTime2 = endTime - today;
-  const days2 = Math.ceil(remainingTime2 / daySeconds);
-  const daysDuration2 = days2 * daySeconds;
-  //const daysDuration2 = (30-days) * daySeconds;
+  const remainingSecondsFromToday = endTime - today;  //* Seconds of days between TODAY and end time (the red area on circle)
 
-  const display = false;
+
 
   return (
     <div className="App w-2/3 space-x-10 ">
@@ -70,15 +67,15 @@ export default function App() {
           trailStrokeWidth={1}
           size={220}
           strokeWidth={15}
-          duration={daysDuration}
-          initialRemainingTime={remainingTime2}
+          duration={remainingSecondsFromStart} //* Seconds of days between START and end time
+          initialRemainingTime={remainingSecondsFromToday}
           onComplete={(totalElapsedTime) => ({
-            shouldRepeat: remainingTime2 - totalElapsedTime > 0,
+            shouldRepeat: remainingSecondsFromToday - totalElapsedTime > 0,
           })}
         >
-          {({ elapsedTime, color }) => (
+          {({ elapsedTime, color }) => ( //* elapsedTime: Time has passed in second
             <span style={{ color: "#fff" }} className="text-lg">
-              {renderTime(getTimeDays(daysDuration - elapsedTime))}
+              {renderTime(getTimeDays(remainingSecondsFromStart - elapsedTime))}
             </span>
           )}
         </CountdownCircleTimer>
@@ -105,9 +102,9 @@ export default function App() {
           strokeWidth={15}
           size={220}
           duration={daySeconds}
-          initialRemainingTime={remainingTime2 % daySeconds}
+          initialRemainingTime={remainingSecondsFromToday % daySeconds}
           onComplete={(totalElapsedTime) => ({
-            shouldRepeat: remainingTime2 - totalElapsedTime > hourSeconds,
+            shouldRepeat: remainingSecondsFromToday - totalElapsedTime > hourSeconds,
           })}
         >
           {({ elapsedTime, color }) => (
@@ -144,9 +141,9 @@ export default function App() {
           strokeWidth={15}
           size={220}
           duration={hourSeconds}
-          initialRemainingTime={remainingTime2 % hourSeconds}
+          initialRemainingTime={remainingSecondsFromToday % hourSeconds}
           onComplete={(totalElapsedTime) => ({
-            shouldRepeat: remainingTime2 - totalElapsedTime > 0,
+            shouldRepeat: remainingSecondsFromToday - totalElapsedTime > 0,
           })}
         >
           {({ elapsedTime, color }) => (
@@ -183,9 +180,9 @@ export default function App() {
           strokeWidth={15}
           size={220}
           duration={minuteSeconds}
-          initialRemainingTime={remainingTime2 % minuteSeconds}
+          initialRemainingTime={remainingSecondsFromToday % minuteSeconds}
           onComplete={(totalElapsedTime) => ({
-            shouldRepeat: remainingTime2 - totalElapsedTime > 0,
+            shouldRepeat: remainingSecondsFromToday - totalElapsedTime > 0,
           })}
         >
           {({ elapsedTime, color }) => (
