@@ -210,9 +210,9 @@ const TimelineProject = (props: Props) => {
         };
         return (
           <div className="flex items-center">
-            <div className="flex flex-col ">
+            <div className="flex flex-col items-center">
               <div
-                className="flex justify-center text-2xl"
+                className="flex justify-center text-4xl"
                 style={{
                   color: handleStylePassedColor(event),
                 }}
@@ -246,7 +246,7 @@ const TimelineProject = (props: Props) => {
                 )}
               </div>
               <div
-                className="flex justify-center text-2xl text-center whitespace-nowrap"
+                className="flex justify-center text-3xl text-center whitespace-nowrap w-28 font-semibold"
                 style={{
                   color: handleStylePassedColor(event),
                 }}
