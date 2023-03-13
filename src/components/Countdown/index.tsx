@@ -44,7 +44,7 @@ export default function App(props: Props) {
 
 
   return (
-    <div className="App w-2/3 space-x-10 ">
+    <div className="App w-2/3 space-x-10 z-20">
       <div className="flex flex-col space-y-6 ">
         <div className="absolute">
           <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
